@@ -1,0 +1,53 @@
+# Makefile para o Sistema de Boot MiniOS
+
+# Compilador Assembly
+ASM = nasm
+ASMFLAGS = -f bin
+
+# Emulador
+QEMU = qemu-system-i386
+
+# Arquivos
+BOOT_SRC = boot.asm
+BOOT_BIN = boot.bin
+DISK_IMG = minios.img
+
+# Regra padrão
+all: $(DISK_IMG)
+
+# Compilar boot loader
+$(BOOT_BIN): $(BOOT_SRC)
+	$(ASM) $(ASMFLAGS) $(BOOT_SRC) -o $(BOOT_BIN)
+
+# Criar imagem de disco
+$(DISK_IMG): $(BOOT_BIN)
+	dd if=/dev/zero of=$(DISK_IMG) bs=512 count=2880
+	dd if=$(BOOT_BIN) of=$(DISK_IMG) conv=notrunc
+
+# Executar no QEMU
+run: $(DISK_IMG)
+	$(QEMU) -fda $(DISK_IMG) -boot a
+
+# Executar com debug
+debug: $(DISK_IMG)
+	$(QEMU) -fda $(DISK_IMG) -boot a -s -S
+
+# Limpeza
+clean:
+	rm -f $(BOOT_BIN) $(DISK_IMG)
+
+# Instalar dependências (Ubuntu/Debian)
+install-deps:
+	sudo apt-get update
+	sudo apt-get install nasm qemu-system-x86
+
+# Ajuda
+help:
+	@echo "Comandos disponíveis:"
+	@echo "  make all        - Compilar tudo"
+	@echo "  make run        - Executar no QEMU"
+	@echo "  make debug      - Executar com debug"
+	@echo "  make clean      - Limpar arquivos"
+	@echo "  make install-deps - Instalar dependências"
+
+.PHONY: all run debug clean install-deps help

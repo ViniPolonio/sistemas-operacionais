@@ -1,0 +1,8 @@
+{
+    "files.associations": {
+        "Makefile": "makefile",
+        "*.asm": "asm-intel-x86-generic"
+    },
+    "editor.insertSpaces": false,
+    "editor.detectIndentation": false
+}
