@@ -1,38 +1,253 @@
-.App {
-  text-align: center;
-}
+/* src/App.css */
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f7f6;
+    color: #333;
   }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+  
+  .app-container {
+    max-width: 1200px;
+    margin: 20px auto;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
   }
-  to {
-    transform: rotate(360deg);
+  
+  .app-header {
+    background-color: #283747; /* Azul escuro */
+    color: white;
+    padding: 20px 30px;
+    text-align: center;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
   }
-}
+  
+  .app-header h1 {
+    margin: 0 0 15px 0;
+    font-size: 1.8em;
+  }
+  
+  .app-nav {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+  }
+  
+  .app-nav button {
+    background-color: #4a6fa5; /* Azul médio */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    min-width: 180px;
+  }
+  
+  .app-nav button:hover {
+    background-color: #3b5a80;
+    transform: translateY(-2px);
+  }
+  
+  .app-nav button.active {
+    background-color: #1a4f8b; /* Azul mais escuro */
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    transform: translateY(0);
+  }
+  
+  .app-main-content {
+    padding: 30px;
+  }
+  
+  /* Dashboard de Monitoramento */
+  .dashboard-container {
+    text-align: center;
+  }
+  
+  .dashboard-container h2 {
+    color: #283747;
+    margin-bottom: 20px;
+    font-size: 1.6em;
+  }
+  
+  .dashboard-overview {
+    background-color: #e6f0ff; /* Azul claro */
+    border-left: 5px solid #4a6fa5;
+    padding: 10px 20px;
+    margin-bottom: 30px;
+    border-radius: 4px;
+    color: #335588;
+    display: inline-block; /* Para que o padding funcione bem */
+  }
+  
+  .machine-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+    margin-top: 20px;
+  }
+  
+  .machine-card {
+    background-color: #fcfcfc;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 20px;
+    text-align: left;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s ease, border-color 0.2s ease;
+  }
+  
+  .machine-card:hover {
+    transform: translateY(-5px);
+    border-color: #a3c9e6;
+  }
+  
+  .machine-card.alert {
+    border-color: #e74c3c; /* Vermelho para alerta */
+    background-color: #ffe6e6; /* Fundo mais claro para alerta */
+    box-shadow: 0 2px 10px rgba(231, 76, 60, 0.2);
+  }
+  
+  .machine-card h3 {
+    color: #283747;
+    margin-top: 0;
+    font-size: 1.3em;
+    border-bottom: 2px solid #eee;
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+  }
+  
+  .machine-card p {
+    margin: 5px 0;
+    color: #555;
+  }
+  
+  .machine-card .metrics {
+    margin-top: 15px;
+    border-top: 1px dashed #eee;
+    padding-top: 15px;
+  }
+  
+  .machine-card .metric-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 0;
+    font-size: 0.95em;
+    color: #444;
+  }
+  
+  .machine-card .metric-item span:first-child {
+    font-weight: bold;
+  }
+  
+  .machine-card .metric-item span.high {
+    color: #e74c3c; /* Cor de atenção para métricas altas */
+    font-weight: bold;
+  }
+  
+  .alert-message {
+    color: #e74c3c;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 15px;
+    padding: 10px;
+    background-color: rgba(231, 76, 60, 0.1);
+    border-radius: 4px;
+  }
+  
+  /* Coleta de PDFs */
+  .pdf-collector-container {
+    text-align: center;
+  }
+  
+  .pdf-collector-container h2 {
+    color: #283747;
+    margin-bottom: 25px;
+    font-size: 1.6em;
+  }
+  
+  .pdf-collector-container button {
+    background-color: #27ae60; /* Verde */
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.1em;
+    transition: background-color 0.3s ease;
+    margin-bottom: 30px;
+  }
+  
+  .pdf-collector-container button:hover:not(:disabled) {
+    background-color: #229954;
+  }
+  
+  .pdf-collector-container button:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+  }
+  
+  .pdf-results {
+    margin-top: 20px;
+    background-color: #fcfcfc;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    text-align: left;
+  }
+  
+  .pdf-results h3 {
+    color: #283747;
+    margin-top: 0;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #eee;
+    padding-bottom: 10px;
+  }
+  
+  .pdf-list-header {
+    display: grid;
+    grid-template-columns: 1.5fr 1.5fr 2fr; /* Ajuste as proporções conforme necessário */
+    font-weight: bold;
+    padding: 10px 0;
+    border-bottom: 1px solid #ddd;
+    background-color: #f9f9f9;
+  }
+  
+  .pdf-item {
+    display: grid;
+    grid-template-columns: 1.5fr 1.5fr 2fr;
+    padding: 10px 0;
+    border-bottom: 1px dashed #eee;
+    align-items: center;
+  }
+  
+  .pdf-item:last-child {
+    border-bottom: none;
+  }
+  
+  .pdf-filename {
+    font-weight: 500;
+    color: #4a6fa5;
+  }
+  
+  .pdf-location {
+    font-style: italic;
+    color: #666;
+    word-break: break-all; /* Para quebrar longos caminhos */
+  }
+  
+  .pdf-topic {
+    color: #333;
+  }
+  
+  .no-data-message {
+    color: #666;
+    font-style: italic;
+    margin-top: 30px;
+  }
