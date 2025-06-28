@@ -9,11 +9,10 @@ const PDFCollector = () => {
 
   const handleCollectPdfs = () => {
     setIsCollecting(true);
-    // Simula uma demora na coleta (ex: acesso a VMs, processamento IA)
     setTimeout(() => {
-      setCollectedPdfs(mockPdfs); // Carrega os dados mockados após a "coleta"
+      setCollectedPdfs(mockPdfs);
       setIsCollecting(false);
-    }, 1500); // 1.5 segundos de "processamento"
+    }, 1500); // 1.5 segundos de "processamento FIXO "
   };
 
   return (
